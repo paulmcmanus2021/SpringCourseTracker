@@ -1,6 +1,7 @@
 package com.example.codeclan.SpringCourseTracker.controllers;
 
 import com.example.codeclan.SpringCourseTracker.models.Course;
+import com.example.codeclan.SpringCourseTracker.models.Customer;
 import com.example.codeclan.SpringCourseTracker.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,4 +31,18 @@ public class CourseController {
         courseRepository.save(course);
         return new ResponseEntity<>(course, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/courses/rating")
+    public ResponseEntity<List<Course>> getCoursesByRating(@RequestParam(name = "rating") int rating){
+        List<Course> foundCourses = courseRepository.findByRating(rating);
+        return new ResponseEntity<>(foundCourses, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/courses/customers")
+    public ResponseEntity<List<Course>> getCoursesByCustomerId(@RequestParam(name = "id")Long id){
+        List<Course> foundCourses = courseRepository.findByBookingsCustomerId(id);
+        return new ResponseEntity<>(foundCourses, HttpStatus.OK);
+    }
+
+
 }

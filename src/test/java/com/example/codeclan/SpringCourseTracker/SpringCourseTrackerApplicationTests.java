@@ -57,14 +57,14 @@ class SpringCourseTrackerApplicationTests {
 
 	@Test
 	public void canGetAllCoursesForACustomer(){
-		Customer stephen = new Customer("Tony","Edinburgh", 10);
+		Customer stephen = new Customer("Stephen","Edinburgh", 10);
 		customerRepository.save(stephen);
 		Course behaviour = new Course("Behaviour", "Edinburgh",2);
 		courseRepository.save(behaviour);
 		Booking booking2 = new Booking("28-02-20", behaviour, stephen);
 		bookingRepository.save(booking2);
 
-		List<Course> foundCourses = courseRepository.findByBookingsCustomer(stephen);
+		List<Course> foundCourses = courseRepository.findByBookingsCustomerId(4L);
 		assertEquals(1, foundCourses.size());
 	}
 
@@ -73,5 +73,4 @@ class SpringCourseTrackerApplicationTests {
 		List<Booking> foundBookings = bookingRepository.findByDate("13-02-20");
 		assertEquals(3, foundBookings.size());
 	}
-
 }

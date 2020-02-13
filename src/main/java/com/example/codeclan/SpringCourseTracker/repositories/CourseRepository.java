@@ -11,5 +11,5 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByRating(int rating);
 
-    List<Course> findByBookingsCustomer(Customer customer);
+    List<Course> findByBookingsCustomerId(Long id);
 }
