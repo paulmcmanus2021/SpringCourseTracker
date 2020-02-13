@@ -76,8 +76,8 @@ class SpringCourseTrackerApplicationTests {
 
 	@Test
 	public void canGetAllCustomersInGivenTownForGivenCourse(){
-		List<Customer> foundCustomers = customerRepository.findByBookingsCourseTown("Glasgow");
-		assertEquals(5, foundCustomers.size());
+		List<Customer> foundCustomers = customerRepository.findByTownAndBookingsCourseId("Glasgow",1L);
+		assertEquals(2, foundCustomers.size());
 	}
 
 	@Test

@@ -36,4 +36,10 @@ public class CustomerController {
         List<Customer> foundCustomers = customerRepository.findByBookingsCourseId(id);
         return new ResponseEntity<>(foundCustomers, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/customers/town/course")
+    public ResponseEntity<List<Customer>> getAllCustomersInATownOnACourse(@RequestParam(name = "town") String town, @RequestParam(name = "id")Long id){
+        List<Customer> foundCustomers = customerRepository.findByTownAndBookingsCourseId(town, id);
+        return new ResponseEntity<>(foundCustomers, HttpStatus.OK);
+    }
 }
