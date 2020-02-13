@@ -39,7 +39,7 @@ public class CustomerController {
 
     @GetMapping(value = "/customers/town/course")
     public ResponseEntity<List<Customer>> getAllCustomersInATownOnACourse(@RequestParam(name = "town") String town, @RequestParam(name = "id")Long id){
-        List<Customer> foundCustomers = customerRepository.findByTownAndBookingsCourseId(town, id);
+        List<Customer> foundCustomers = customerRepository.findByTownIgnoreCaseAndBookingsCourseId(town, id);
         return new ResponseEntity<>(foundCustomers, HttpStatus.OK);
     }
 }
