@@ -68,4 +68,10 @@ class SpringCourseTrackerApplicationTests {
 		assertEquals(1, foundCourses.size());
 	}
 
+	@Test
+	public void canGetAllBookingsForADate(){
+		List<Booking> foundBookings = bookingRepository.findByDate("13-02-20");
+		assertEquals(3, foundBookings.size());
+	}
+
 }
