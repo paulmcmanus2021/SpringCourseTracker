@@ -80,5 +80,9 @@ class SpringCourseTrackerApplicationTests {
 		assertEquals(5, foundCustomers.size());
 	}
 
-	
+	@Test
+	public void canGetAllCustomersOverACertainAgeForAGivenTownForAGivenCourse(){
+		List<Customer> foundCustomers = customerRepository.findByAgeGreaterThanAndBookingsCourseTownAndBookingsCourseId(40, "Glasgow", 1L);
+		assertEquals(1, foundCustomers.size());
+	}
 }
