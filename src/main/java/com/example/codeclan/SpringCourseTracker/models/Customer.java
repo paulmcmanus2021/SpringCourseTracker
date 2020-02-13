@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
 
     @Column(name = "name")
@@ -74,4 +76,6 @@ public class Customer {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+
 }

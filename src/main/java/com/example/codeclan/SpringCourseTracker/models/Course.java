@@ -17,8 +17,8 @@ public class Course {
     @Column(name = "town")
     private String town;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "rating")
+    private int rating;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +28,10 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Booking> bookings;
 
-    public Course(String name, String town, int age) {
+    public Course(String name, String town, int rating) {
         this.name = name;
         this.town = town;
-        this.age = age;
+        this.rating = rating;
         this.bookings = new ArrayList<>();
     }
 
@@ -54,12 +54,12 @@ public class Course {
         this.town = town;
     }
 
-    public int getAge() {
-        return age;
+    public int getRating() {
+        return rating;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public Long getId() {
@@ -77,4 +77,6 @@ public class Course {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+
 }

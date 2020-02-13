@@ -1,5 +1,8 @@
 package com.example.codeclan.SpringCourseTracker.models;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,10 +16,12 @@ public class Booking {
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
@@ -61,4 +66,6 @@ public class Booking {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 }
