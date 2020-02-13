@@ -30,4 +30,10 @@ public class BookingController {
         bookingRepository.save(booking);
         return new ResponseEntity<>(booking, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/bookings/date")
+    public ResponseEntity<List<Booking>> findBookingsByDate(@RequestParam (name = "date") String date){
+        List<Booking> foundBookings = bookingRepository.findByDate(date);
+        return new ResponseEntity<>(foundBookings, HttpStatus.OK);
+    }
 }

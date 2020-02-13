@@ -30,4 +30,10 @@ public class CustomerController {
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "customers/course")
+    public ResponseEntity<List<Customer>> getAllCustomersForACourse(@RequestParam (name = "id") Long id){
+        List<Customer> foundCustomers = customerRepository.findByBookingsCourseId(id);
+        return new ResponseEntity<>(foundCustomers, HttpStatus.OK);
+    }
 }
