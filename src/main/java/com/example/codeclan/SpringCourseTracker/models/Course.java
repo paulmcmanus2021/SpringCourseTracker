@@ -1,6 +1,8 @@
 package com.example.codeclan.SpringCourseTracker.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "course")
     private List<Booking> bookings;
 
     public Course(String name, String town, int age) {
