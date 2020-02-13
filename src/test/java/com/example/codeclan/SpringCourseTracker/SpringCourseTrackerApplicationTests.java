@@ -73,4 +73,12 @@ class SpringCourseTrackerApplicationTests {
 		List<Booking> foundBookings = bookingRepository.findByDate("13-02-20");
 		assertEquals(3, foundBookings.size());
 	}
+
+	@Test
+	public void canGetAllCustomersInGivenTownForGivenCourse(){
+		List<Customer> foundCustomers = customerRepository.findByBookingsCourseTown("Glasgow");
+		assertEquals(5, foundCustomers.size());
+	}
+
+	
 }
